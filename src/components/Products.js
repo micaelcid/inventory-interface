@@ -1,11 +1,12 @@
 import React from "react";
+import Helmet from "react-helmet";
 import { connect } from "react-redux";
 import { 
-    fetchData,
+    getProducts,
     pushProduct,
     updateProduct,
     deleteProduct
-} from "../store";
+} from "../store/actions/product";
 
 class Products extends React.Component {
     constructor(props){
@@ -34,6 +35,10 @@ class Products extends React.Component {
 
         return (
             <div>
+                <Helmet defer={false}>
+                    <title>Lista de produtos - Casa do código</title>
+                    <meta name="description" content="Listagem de produtos da casa do código"/>
+                </Helmet>
                 <h3 className="float-left" >
                     Lista de produtos
                 </h3>
@@ -54,7 +59,7 @@ class Products extends React.Component {
                         </tr>
                     </thead>
                     <tbody id="product-list">
-                        { products.map( ( product ) => (
+                        { products != undefined ? products.map( ( product ) => (
                             <tr key={ product.id }>
                                 <th>{ product.id }</th>
                                 <td>{ product.titulo }</td>
@@ -71,7 +76,7 @@ class Products extends React.Component {
                                     onClick={() => this.deleteProduct(product.id)}></i>
                                 </td>
                             </tr>
-                        ) ) }
+                        ) ) : false }
                     </tbody>
                 </table>
                 {this.state.openedModal != null ? (
@@ -252,25 +257,29 @@ class Products extends React.Component {
     }
     componentDidMount( ) {
         if ( this.props.products.length <= 0 ) {
-            this.props.fetchData();
- 
+            fetch( "http://localhost:3000/products",{
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(response => this.props.getProducts(response))
         }
     }
 
 }
-
-Products.serverFetch = fetchData; // static declaration of data requirements
 
 const mapStateToProps =  state  => ( {
     products: state.products,
 } );
 
 const mapDispatchToProps = {
-    fetchData,
+    getProducts,
     pushProduct,
     updateProduct,
     deleteProduct
 };
 
-export default connect( mapStateToProps, mapDispatchToProps )( Products );
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
 

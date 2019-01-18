@@ -8,7 +8,9 @@ import { Provider as ReduxProvider } from "react-redux";
 import Helmet from "react-helmet";
 import routes from "./routes";
 import Layout from "./components/Layout";
-import createStore, { initializeSession } from "./store";
+import createStore from "./store/index";
+import reducer from './store/reducers/index'
+import { initializeSession }  from './store/actions/session'
 
 const app = express();
 
@@ -16,16 +18,16 @@ app.use( express.static( path.resolve( __dirname, "../dist" ) ) );
 
 app.get( "/*", ( req, res ) => {
     const context = { };
-    const store = createStore( );
+    const store = createStore(reducer);
 
     store.dispatch( initializeSession( ) );
 
     const dataRequirements =
         routes
-            .filter( route => matchPath( req.url, route ) ) // filter matching paths
-            .map( route => route.component ) // map to components
-            .filter( comp => comp.serverFetch ) // check if components have data requirement
-            .map( comp => store.dispatch( comp.serverFetch( ) ) ); // dispatch data requirement
+            .filter( route => matchPath( req.url, route ) ) // Filter matching paths
+            .map( route => route.component ) // Map to components
+            .filter( comp => comp.serverFetch ) // Check if components have data requirement
+            .map( comp => store.dispatch( comp.serverFetch( ) ) ); // Dispatch data requirement
 
     Promise.all( dataRequirements ).then( ( ) => {
         const jsx = (
@@ -56,7 +58,6 @@ function htmlTemplate( reactDom, reduxState, helmetData ) {
             <meta charset="utf-8">
             ${ helmetData.title.toString( ) }
             ${ helmetData.meta.toString( ) }
-            <title>Loja de produtos</title>
             <link rel="stylesheet" href="./assets/css/bootstrap.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
             <link rel="stylesheet" href="./assets/css/styles.css">

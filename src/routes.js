@@ -1,7 +1,5 @@
-import Home from "./components/Home";
-import Products from "./components/Products";
-import Contact from "./components/Contact";
-import Secret from "./components/Secret";
+import Home from "./components/Home"
+import Products from "./components/Products"
 
 export default [
     {
@@ -13,15 +11,5 @@ export default [
         path: "/products",
         component: Products,
         exact: true,
-    },
-    // {
-    //     path: "/contact",
-    //     component: Contact,
-    //     exact: true,
-    // },
-    // {
-    //     path: "/secret",
-    //     component: Secret,
-    //     exact: true,
-    // },
+    }
 ];

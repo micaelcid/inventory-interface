@@ -1,18 +1,17 @@
-const initialState = {
-    products: [],
-}
+import {GET, CREATE, UPDATE, DELETE} from '../actions/product'
+
 
 //Standard archtecture of a reducer
-export default (state = initialState, action) => {
+export default (state = [], action) => {
     switch ( action.type ) {
-        case "GET":
+        case GET:
             return action.data;
-        case "CREATE":
+        case CREATE:
             return [
                 ...state, 
                 action.data
             ];
-        case "UPDATE":
+        case UPDATE:
             for(let i in state){
                 if(state[i].id == action.data.id){
                     state[i].titulo = action.data.titulo
@@ -21,7 +20,7 @@ export default (state = initialState, action) => {
                 }
             }
             return state
-        case "DELETE":
+        case DELETE:
             return state.filter(product => product.id != action.data)
         default: return state;
     }
