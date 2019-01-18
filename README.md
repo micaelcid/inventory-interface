@@ -6,7 +6,7 @@ First, you need to clone the backend which this client consume on: ```https://gi
 
 
 After that, Clone the repo with
-```git clone https://github.com/micaelcid/react-ssr-spa```
+```git clone https://github.com/micaelcid/react-universal-app```
 
 Install dependencies with
 ```npm i```
