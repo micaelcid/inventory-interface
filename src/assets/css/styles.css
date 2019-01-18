@@ -1,0 +1,17 @@
+.navbar{
+    background-color:#007bff !important;
+    margin-bottom:20px;
+}
+.navbar a{
+    color:white !important;
+}
+.navbar button{
+    color:white !important;
+    border-color:white !important;
+}
+i {
+    cursor: pointer;
+}
+.alert{
+    display: none;
+}
