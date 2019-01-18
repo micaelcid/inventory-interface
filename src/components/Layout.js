@@ -2,15 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Header from "./Header";
 import routes from "../routes";
-
+import Helmet from "react-helmet"
 class Layout extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            title: "Welcome to React Universal App!",
-        };
-    }
-
     render() {
         return (
             <div>
