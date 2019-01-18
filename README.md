@@ -1,5 +1,5 @@
-# React Server Side Rendering
-A baseline for server side rendering for your React application.
+# React Universal App: SPA + SSR
+A single page applications with server-side rendering for React.
 
 ## Getting started
 First, you need to clone the backend which this client consume on: ```https://github.com/micaelcid/node-js-caelum```
