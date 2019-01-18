@@ -1,7 +1,14 @@
 import React from "react";
+import Helmet from "react-helmet"
 
 const Home = () => (
-    <h2>Página inicial</h2>
+    <div>
+        <Helmet>
+            <title>Página inicial - Casa do código</title>
+            <meta name="description" content="Página inicial da casa do código" />
+        </Helmet>
+        <h1>Página inicial</h1>
+    </div>
 );
 
 export default Home;

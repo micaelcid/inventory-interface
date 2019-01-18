@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import { connect } from "react-redux";
 import { 
     getProducts,
@@ -34,6 +35,10 @@ class Products extends React.Component {
 
         return (
             <div>
+                <Helmet>
+                    <title>Lista de produtos - Casa do código</title>
+                    <meta name="description" content="Listagem de produtos da casa do código" />
+                </Helmet>
                 <h3 className="float-left" >
                     Lista de produtos
                 </h3>
