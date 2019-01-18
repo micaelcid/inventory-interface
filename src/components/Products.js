@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import {getAllProducts} from "../store/api/product"
-
 import { 
+    getProducts,
     pushProduct,
     updateProduct,
     deleteProduct
@@ -253,7 +252,14 @@ class Products extends React.Component {
     }
     componentDidMount( ) {
         if ( this.props.products.length <= 0 ) {
-            this.props.getAllProducts();
+            fetch( "http://localhost:3000/products",{
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(response => this.props.getProducts(response))
         }
     }
 
@@ -264,7 +270,7 @@ const mapStateToProps =  state  => ( {
 } );
 
 const mapDispatchToProps = {
-    getAllProducts,
+    getProducts,
     pushProduct,
     updateProduct,
     deleteProduct
