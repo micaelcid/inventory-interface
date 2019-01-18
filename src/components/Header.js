@@ -10,17 +10,17 @@ import { connect } from "react-redux";
 const Header = () => (
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to="/">Casa do Código</Link>
+            <NavLink className="navbar-brand" to="/">Casa do Código</NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarText">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Início</Link>
+                        <NavLink className="nav-link" to="/">Início</NavLink>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/products">Produtos</Link>
+                        <NavLink className="nav-link" to="/products">Produtos</NavLink>
                     </li>
                 </ul>
             </div>

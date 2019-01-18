@@ -3,7 +3,7 @@ import thunkMiddleware from "redux-thunk";
 import { getAllProducts } from "./api";
 
 
-const initialState = {
+let initialState = {
     products: [],
 }
 
@@ -32,7 +32,7 @@ export const deleteProduct = ( data ) => ( {
     data,
 } );
  
-const productsReducer = ( state = initialState, action ) => {
+const productsReducer = ( state = [], action ) => {
     switch ( action.type ) {
         case "GET":
             return action.data;
@@ -58,7 +58,7 @@ const productsReducer = ( state = initialState, action ) => {
 
 
 export const fetchData = ( ) => ( dispatch ) =>
-    getAllProducts( ).then( res => dispatch( storeProducts( res ) ))
+    getAllProducts().then( res => dispatch( storeProducts( res ) ))
 
 
 

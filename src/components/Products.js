@@ -29,9 +29,14 @@ class Products extends React.Component {
         this.deleteProduct = this.deleteProduct.bind(this)
     }
 
+    componentDidMount( ) {
+        if ( this.props.products.length <= 0 ) {
+            this.props.fetchData();
+        }
+    }
     render( ) {
         const { products } = this.props;
-
+    
         return (
             <div>
                 <h3 className="float-left" >
@@ -54,7 +59,8 @@ class Products extends React.Component {
                         </tr>
                     </thead>
                     <tbody id="product-list">
-                        { products.map( ( product ) => (
+                        { products.length > 0 ?
+                        products.map( ( product ) => (
                             <tr key={ product.id }>
                                 <th>{ product.id }</th>
                                 <td>{ product.titulo }</td>
@@ -71,7 +77,7 @@ class Products extends React.Component {
                                     onClick={() => this.deleteProduct(product.id)}></i>
                                 </td>
                             </tr>
-                        ) ) }
+                        ) ) : false }
                     </tbody>
                 </table>
                 {this.state.openedModal != null ? (
@@ -250,12 +256,7 @@ class Products extends React.Component {
             })
         }
     }
-    componentDidMount( ) {
-        if ( this.props.products.length <= 0 ) {
-            this.props.fetchData();
- 
-        }
-    }
+    
 
 }
 
@@ -263,7 +264,7 @@ Products.serverFetch = fetchData; // static declaration of data requirements
 
 const mapStateToProps =  state  => ( {
     products: state.products,
-} );
+});
 
 const mapDispatchToProps = {
     fetchData,
