@@ -58,7 +58,6 @@ function htmlTemplate( reactDom, reduxState, helmetData ) {
             <meta charset="utf-8">
             ${ helmetData.title.toString( ) }
             ${ helmetData.meta.toString( ) }
-            <title>Loja de produtos</title>
             <link rel="stylesheet" href="./assets/css/bootstrap.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
             <link rel="stylesheet" href="./assets/css/styles.css">

@@ -35,9 +35,9 @@ class Products extends React.Component {
 
         return (
             <div>
-                <Helmet>
+                <Helmet defer={false}>
                     <title>Lista de produtos - Casa do código</title>
-                    <meta name="description" content="Listagem de produtos da casa do código" />
+                    <meta name="description" content="Listagem de produtos da casa do código"/>
                 </Helmet>
                 <h3 className="float-left" >
                     Lista de produtos

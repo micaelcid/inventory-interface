@@ -5,9 +5,11 @@ const Home = () => (
     <div>
         <Helmet>
             <title>Página inicial - Casa do código</title>
-            <meta name="description" content="Página inicial da casa do código" />
+            <meta name="description" content="Página inicial da casa do código"/>
         </Helmet>
-        <h1>Página inicial</h1>
+        <h1>
+            Página inicial com conteúdo irrelevante
+        </h1>
     </div>
 );
 
