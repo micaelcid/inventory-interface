@@ -2,10 +2,10 @@
 A baseline for server side rendering for your React application.
 
 ## Getting started
-First, you need to clone the backend which this client consume: ```https://github.com/micaelcid/node-js-caelum```
+First, you need to clone the backend which this client consume on: ```https://github.com/micaelcid/node-js-caelum```
 
 
-After that Clone the repo with
+After that, Clone the repo with
 ```git clone https://github.com/micaelcid/react-ssr-spa```
 
 Install dependencies with
