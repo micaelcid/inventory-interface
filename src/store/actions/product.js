@@ -1,19 +1,33 @@
-export const setProducts = ( data ) => ( {
-    type: "SET",
-    data,
-} );
+export const GET    = 'products:getProducts'
+export const CREATE = 'products:pushProduct'
+export const UPDATE = 'products:updateProduct'
+export const DELETE = 'products:deleteProducts'
 
-export const pushProduct = ( data ) => ( {
-    type: "CREATE",
-    data,
-} );
 
-export const updateProduct = ( data ) => ( {
-    type: "UPDATE",
-    data,
-} );
+export function getProducts(data){
+    return{
+        type: GET,
+        data
+    }
+}
 
-export const deleteProduct = ( data ) => ( {
-    type: "DELETE",
-    data,
-} );
+export function pushProduct(data){
+    return{
+        type:CREATE,
+        data
+    }
+}
+
+export function updateProduct(data){
+    return{
+        type:UPDATE,
+        data
+    }
+}
+
+export function deleteProduct(data){
+    return{
+        type:DELETE,
+        data
+    }
+}

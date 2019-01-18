@@ -1,9 +1,6 @@
-const initialState = {
-    loggedIn:false
-}
 
 //Standard archtecture of a reducer
-export default (state = initialState, action) => {
+export default (state = false, action) => {
     switch ( action.type ) {
         case "INITIALIZE_SESSION":
             return true;

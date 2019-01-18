@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
+import {getProducts} from '../actions/product'
 
-export function getAllProducts() {
+export const getAllProducts = ( ) => ( dispatch ) => {
     fetch( "http://localhost:3000/products",{
         headers:{
             'Accept': 'application/json',
@@ -8,4 +9,6 @@ export function getAllProducts() {
         }
     })
     .then(response => response.json())
+    .then(response => dispatch(getProducts(response)))
 }
+

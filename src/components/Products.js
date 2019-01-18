@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import {getAllProducts} from "../api"
+import {getAllProducts} from "../store/api/product"
 
 import { 
-    setProducts,
     pushProduct,
     updateProduct,
     deleteProduct
@@ -33,7 +32,6 @@ class Products extends React.Component {
 
     render( ) {
         const { products } = this.props;
-        console.log(this.props)
 
         return (
             <div>
@@ -253,12 +251,10 @@ class Products extends React.Component {
             })
         }
     }
-    
-    componentWillMount() {
-   
-    }
     componentDidMount( ) {
-    
+        if ( this.props.products.length <= 0 ) {
+            this.props.getAllProducts();
+        }
     }
 
 }
@@ -269,7 +265,6 @@ const mapStateToProps =  state  => ( {
 
 const mapDispatchToProps = {
     getAllProducts,
-    setProducts,
     pushProduct,
     updateProduct,
     deleteProduct
