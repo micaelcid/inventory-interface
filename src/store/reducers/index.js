@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 
-import reducerProduct from './reducerProduct';
-import reducerSession from './reducerSession';
+import productReducer from './productReducer';
+import sessionReducer from './sessionReducer';
 
 export default combineReducers({
-   reducerProduct,
-   reducerSession
+   products: productReducer,
+   session: sessionReducer
 })

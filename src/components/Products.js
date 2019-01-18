@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import {getAllProducts} from "../api"
+
 import { 
-    fetchData,
+    setProducts,
     pushProduct,
     updateProduct,
     deleteProduct
-} from "../store";
+} from "../store/actions/product";
 
 class Products extends React.Component {
     constructor(props){
@@ -31,6 +33,7 @@ class Products extends React.Component {
 
     render( ) {
         const { products } = this.props;
+        console.log(this.props)
 
         return (
             <div>
@@ -54,7 +57,7 @@ class Products extends React.Component {
                         </tr>
                     </thead>
                     <tbody id="product-list">
-                        { products.map( ( product ) => (
+                        { products != undefined ? products.map( ( product ) => (
                             <tr key={ product.id }>
                                 <th>{ product.id }</th>
                                 <td>{ product.titulo }</td>
@@ -71,7 +74,7 @@ class Products extends React.Component {
                                     onClick={() => this.deleteProduct(product.id)}></i>
                                 </td>
                             </tr>
-                        ) ) }
+                        ) ) : false }
                     </tbody>
                 </table>
                 {this.state.openedModal != null ? (
@@ -250,27 +253,27 @@ class Products extends React.Component {
             })
         }
     }
+    
+    componentWillMount() {
+   
+    }
     componentDidMount( ) {
-        if ( this.props.products.length <= 0 ) {
-            this.props.fetchData();
- 
-        }
+    
     }
 
 }
-
-Products.serverFetch = fetchData; // static declaration of data requirements
 
 const mapStateToProps =  state  => ( {
     products: state.products,
 } );
 
 const mapDispatchToProps = {
-    fetchData,
+    getAllProducts,
+    setProducts,
     pushProduct,
     updateProduct,
     deleteProduct
 };
 
-export default connect( mapStateToProps, mapDispatchToProps )( Products );
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
 

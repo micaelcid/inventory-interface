@@ -5,7 +5,7 @@ const initialState = {
 //Standard archtecture of a reducer
 export default (state = initialState, action) => {
     switch ( action.type ) {
-        case "GET":
+        case "SET":
             return action.data;
         case "CREATE":
             return [
